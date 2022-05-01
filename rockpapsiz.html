@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        function computerPlay() {
+            rando = Math.random();
+            if (rando > 0 && rando < .334) {
+                return "rock";
+            }
+            else if (rando > .334 && rando < .667) {
+                return "paper";
+            }
+            else {
+                return "scissors";
+            }
+        }
+
+        function playRound(playsel, compsel) {
+            let compmove = compsel();
+            let playerselected = playsel.toLowerCase();
+            if (playerselected === compmove) {
+                return "tie";
+            }
+            else if (playerselected === "rock" && compmove === "scissors") {
+                return "player wins";
+            }
+            else if (playerselected === "rock" && compmove === "paper") {
+                return "comp wins";
+            }
+            else if (playerselected === "paper" && compmove === "scissors") {
+                return "comp wins";
+            }
+            else if (playerselected === "paper" && compmove === "rock") {
+                return "player wins";
+            }
+            else if (playerselected === "scissors" && compmove === "rock") {
+                return "comp wins";
+            }
+            else if (playerselected === "scissors" && compmove === "paper") {
+                return "player wins";
+            }
+        }
+        function game() {
+            let playerwins = 0;
+            let compwins = 0;
+            for (let i = 0; i < 5; i++) {
+                let outcome = playRound(prompt("choice"), computerPlay);
+                if (outcome === "comp wins") {
+                    compwins++;
+                    console.log("comp win");
+                }
+                else if (outcome === "player wins") {
+                    playerwins++;
+                    console.log("player win");
+                }
+            }
+            if (compwins > playerwins) {
+                return "Computer wins";
+            }
+            else if (compwins < playerwins) {
+                return "Player wins";
+            }
+            else {
+                return "tie game";
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>
