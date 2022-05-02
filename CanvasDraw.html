@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script type="module" src="/main.js"></script>
+    <button>update</button>
+    <canvas></canvas>
+
+    <script>
+
+
+        const btn = document.querySelector('button'); // creates a var to query any <button> in html.
+        const canvas = document.querySelector('canvas'); //creates a var which queries the <canvas>
+        const ctx = canvas.getContext('2d'); // gives access to the canvas tags 2D drawing functions/methods
+
+            // setting below for later use.
+        const WIDTH = document.documentElement.clientWidth; //var equal to client width
+        const HEIGHT = document.documentElement.clientHeight; // var equal to client height
+
+        canvas.width = WIDTH; // sets the width and height of the canvas var/ html
+        //element to the client width and height,
+        canvas.height = HEIGHT;
+            // creates a function which takes a number and randomizes it between
+            // 0 and 100%, then the number is rounded down with Math.floor.
+        function random(number) {
+            return Math.floor(Math.random() * number);
+        }
+            //Below function takes no arguments and draws random circles in a canvas
+        function draw() {
+            // clears the canvas space/context
+            ctx.clearRect(0, 0, WIDTH, HEIGHT);
+            //iterates 100 times, making 100 circles
+            for (let i = 0; i < 100; i++) {
+                //canvas method to start draw
+                ctx.beginPath();
+                //canvas method to define fill style for drawing
+                ctx.fillStyle = 'rgba(255,0,0,0.5)';
+                //defines the size of the circle
+                ctx.arc(random(WIDTH), random(HEIGHT), random(50), 0, 2 * Math.PI);
+                //actually draws.
+                ctx.fill();
+            }
+        }
+
+        btn.addEventListener('click', draw);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+</body>
+
+
+
+</html>
